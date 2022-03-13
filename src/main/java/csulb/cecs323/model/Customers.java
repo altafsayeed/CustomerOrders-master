@@ -15,6 +15,12 @@ import java.util.Objects;
  */
 
 @Entity
+@NamedNativeQuery(
+        name = "ReturnCustomer",
+        query = "SELECT * " +
+                "FROM CUSTOMERS",
+        resultClass = Customers.class
+)
 // I could have avoided uniqueConstraints and just done
 // one constraint, but this was more fun.
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames =
@@ -44,6 +50,15 @@ public class Customers {
     private String phone;
 
     public Customers() {}
+
+    /**
+     *
+     * @param last_name
+     * @param first_name
+     * @param street
+     * @param zip
+     * @param phone
+     */
     public Customers (String last_name, String first_name, String street,
                       String zip, String phone) {
         this.last_name = last_name;
@@ -103,7 +118,7 @@ public class Customers {
 
     @Override
     public String toString () {
-        return "Customer- ID: " + this.customer_id + ", Name: " + this.last_name +
+        return "Customer- ID: " + this.customer_id + "\tName: " + this.last_name +
                 ", " + this.first_name;
     }
     @Override

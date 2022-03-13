@@ -20,8 +20,7 @@ import javax.persistence.NamedNativeQuery;
 @NamedNativeQuery(
         name="ReturnProduct",
         query = "SELECT * " +
-                "FROM   PRODUCTS " +
-                "WHERE  url = ? ",
+                "FROM   PRODUCTS ",
         resultClass = Products.class
 )
 /** Something that we stock, that the customer can order. */
@@ -112,7 +111,7 @@ public class Products {
 
     @Override
     public String toString () {
-        return "Product- UPC: " + this.UPC + ", Name: " + this.prod_name + ", Price: " + this.unit_list_price
-                + " QTY on hand: " + this.units_in_stock;
+        return "Product-UPC: " + this.UPC + "\tName: " + this.prod_name + "\tPrice: " + this.unit_list_price
+                + "\tQTY on hand: " + this.units_in_stock;
     }
 }
